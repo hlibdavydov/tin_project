@@ -1,0 +1,21 @@
+
+:root {
+    --pf: 'Source Sans Pro', sans-serif;
+    --transition: all .5s;
+    --bg: #182227;
+    --bg-light: rgba(255, 255, 255, .15);
+    --clr-text: #FCE8Ec;
+    --clr-text-light: #FCE8Ecbb;
+    --clr-element: #FFABC2;
+    --clr-element-hover: rgba(255, 171, 194, 0.73);
+    --clr-shadow: rgba(0, 0, 0, .2);
+}
+* {
+    transition: var(--transition);
+}
+body {
+    background: var(--bg);
+    font-family: var(--pf);
+    transition: var(--transition);
+    border-bottom: 10px solid var(--clr-element);
+}

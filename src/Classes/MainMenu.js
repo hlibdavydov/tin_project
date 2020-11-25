@@ -1,7 +1,9 @@
 import React from 'react';
 import '../CSS/MainMenu.css';
-import {FaAlignRight} from 'react-icons/fa';
-
+import {BrowserRouter, Route, Redirect, Switch, Link} from "react-router-dom";
+import {MainPage} from "./MainPage";
+import {Departments} from "./Departments";
+import {Employees} from "./Employees";
 export class MainMenu extends React.Component {
     state = {
         toggle: false
@@ -12,14 +14,29 @@ export class MainMenu extends React.Component {
 
 
     render() {
-        return <div id={"navBar"}>
-            <button onClick={this.Toggle}>
-            </button>
-            <ul className={this.state.toggle ? "nav-links show-nav" : "nav-links"}>
-                <li href="#">Home</li>
-                <li href="#">About us</li>
-                <li href="#">Contact</li>
-            </ul>
-        </div>
+        return(
+            <BrowserRouter>
+                <div className="MainMenu">
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to="/">Main Page</Link>
+                            </li>
+                            <li>
+                                <Link to="/departments">Departments</Link>
+                            </li>
+                            <li>
+                                <Link to="/employees">Employees</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <Switch>
+                        <Route path="/" exact component={MainPage}/>
+                        <Route path="/departments" component={Departments}/>
+                        <Route path="/employees" component={Employees}/>
+                    </Switch>
+                </div>
+            </BrowserRouter>
+        )
     }
 }
