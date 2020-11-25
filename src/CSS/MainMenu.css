@@ -1,0 +1,68 @@
+#menu {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: left;
+    padding: 0;
+}
+
+#menu li {
+    list-style: none;
+    margin-top: 30px;
+}
+
+#menu a {
+    font-size: 30px;
+    padding: 20px;
+    background-color: #BDC3C7;
+    transition: background 1s;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    background-color: #627475;
+    text-decoration: underline;
+}
+
+#menu a:visited {
+    color: blue;
+}
+.navBar {
+    width: 100%;
+    background-color: #111;
+    color: white;
+    padding: 10px;
+}
+li {
+    height: 0;
+    overflow: hidden;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.show-nav {
+    height: 120px;
+}
+button {
+    font-size: 30px;
+    margin-right: 30px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    float: right;
+}
+
+/* Media screen size */
+@media screen and (min-width: 768px) {
+
+    li {
+        height: auto;
+        display: flex;
+    }
+
+    li {
+        padding: 0 15px;
+    }
+}
