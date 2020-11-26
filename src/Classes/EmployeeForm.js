@@ -16,21 +16,21 @@ export class EmployeeForm extends React.Component {
             emailError:'',
 
         };
-        this.handleChange = this.handleChange.bind(this);
     }
-
-    handleChange = event => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-        this.setState({
-            [name]: value
-        });
-    }
-
 
     submitInput = event => {
         event.preventDefault();
+        const firstName = new TextField(this.state.firstName);
+        const lastName = new TextField(this.state.lastName);
+        const email = new EmailField(this.state.email, 5, 60);
+        try{
+            firstName.checkRequirements();
+            lastName.checkRequirements();
+            email.checkEmail();
+        }catch (e) {
+            alert(`Error: ${e} | Form contains errors, employee was not added`);
+            return;
+        }
         const employee = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
