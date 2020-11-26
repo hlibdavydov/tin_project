@@ -8,7 +8,7 @@ export class EmployeeForm extends React.Component {
         this.state = {
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -22,24 +22,35 @@ export class EmployeeForm extends React.Component {
         });
     }
 
-    submitInput(event) {
+    submitInput = event => {
         event.preventDefault();
-
+        const employee = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email
+        }
+        this.props.handleAddRow(employee);
     }
 
     render() {
-        return (
-            <div>
-                <form onSubmit={this.submitInput}>
-                    <label>First name<abbr title="Required" aria-label="required">*</abbr></label>
-                    <input name="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
-                    <label>Last name<abbr title="Required" aria-label="required">*</abbr></label>
-                    <input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
-                    <label>Email<abbr title="Required" aria-label="required">*</abbr></label>
-                    <input name="email" type="text" value={this.state.email} onChange={this.handleChange}/>
-                    <Button className="submit" type="submit">Submit</Button>;
-                </form>
-            </div>
-        )
+        if (this.props.isActive) {
+            return (
+                <div>
+                    <form onSubmit={this.submitInput}>
+                        <label>First name<abbr title="Required" aria-label="required">*</abbr></label>
+                        <input name="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
+                        <label>Last name<abbr title="Required" aria-label="required">*</abbr></label>
+                        <input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
+                        <label>Email<abbr title="Required" aria-label="required">*</abbr></label>
+                        <input name="email" type="text" value={this.state.email} onChange={this.handleChange}/>
+                        <Button className="submit" type="submit">Add New Employee</Button>;
+                    </form>
+                </div>
+            );
+        }else{
+            return(
+                <div/>
+            )
+        }
     }
 }

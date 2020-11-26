@@ -6,14 +6,18 @@
     --clr-text: #FCE8Ec;
     --clr-text-light: #FCE8Ecbb;
     --clr-element: #FFABC2;
-    --clr-element-hover: rgba(255, 171, 194, 0.73);
+    --clr-element-hover: #FFABC2bb;
     --clr-shadow: rgba(0, 0, 0, .2);
 }
-p {
-    color: var(--clr-text-light);
-    font-size: 27px;
+table{
+    margin-top: 15px;
 }
-.submit {
-    background-color: #4CAF50;
+table th {
     color: black;
+    background-color:orange;
+}
+table tr {
+    background-color: var(--clr-shadow);
+    color: var(--clr-text-light);
+
 }
