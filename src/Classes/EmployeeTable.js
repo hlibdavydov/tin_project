@@ -33,7 +33,7 @@ export class EmployeeTable extends React.Component {
         return (
             <div>
                 <Button onClick={this.openEmployeeAdder}>{this.state.buttonName}</Button>
-                <EmployeeForm isActive={this.state.showEmployeeAdd} handleAddRow={this.handleAddRow}/>
+                <EmployeeForm isActive={this.state.showEmployeeAdd} addRow={this.handleAddRow}/>
                 <table>
                     <tr>
                         <th>First Name</th>

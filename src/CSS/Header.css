@@ -19,6 +19,7 @@ header h1 {
     font-size: 50px;
     color: whitesmoke;
     margin-left: 15px;
+    border-bottom: none;
 }
 header img {
     max-width: 20%;

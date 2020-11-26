@@ -1,0 +1,30 @@
+:root {
+    --pf: 'Source Sans Pro', sans-serif;
+    --transition: all .5s;
+    --bg: #182227;
+    --bg-light: rgba(255, 255, 255, .15);
+    --clr-text: #FCE8Ec;
+    --clr-text-light: #FCE8Ecbb;
+    --clr-element: #FFABC2;
+    --clr-element-hover: #FFABC2bb;
+    --clr-shadow: rgba(0, 0, 0, .2);
+}
+footer button {
+    background-color: rosybrown;
+    width: 100%;
+}
+footer button:hover{
+    background-color: #d74343;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    background-color: var(--clr-element);
+    text-align: center;
+}
+footer h1{
+    color: black;
+    font-size: 20px;
+}
