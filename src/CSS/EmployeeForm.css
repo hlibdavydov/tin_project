@@ -1,0 +1,82 @@
+:root {
+    --pf: 'Source Sans Pro', sans-serif;
+    --transition: all .5s;
+    --bg: #182227;
+    --bg-light: rgba(255, 255, 255, .15);
+    --clr-text: #FCE8Ec;
+    --clr-text-light: #FCE8Ecbb;
+    --clr-element: #FFABC2;
+    --clr-element-hover: #FFABC2bb;
+    --clr-shadow: rgba(0, 0, 0, .2);
+}
+label {
+    font-size: 30px;
+    padding: 10px;
+    color: var(--clr-text-light);
+
+}
+form {
+    display: grid;
+    grid-template-columns: max-content 0.5fr;
+    row-gap: 1rem;
+    padding-left: 50px;
+
+}
+@media all and (max-width: 720px) {
+    form {
+        grid-template-columns: auto;
+        row-gap: unset;
+        margin-left: unset;
+        display: grid;
+        padding-left: 0;
+    }
+
+}
+input[type=text], select, input[type=email] {
+    background-color: var(--bg-light);
+    color: var(--clr-text);
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 30px;
+}
+.submit {
+    background-color: #4CAF50;
+    color: black;
+}
+input[type=submit] {
+    font-size: 30px;
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+th{
+    background-color: #92c8d6;
+
+}
+table{
+    width: 100%;
+}
+
+table,th,td {
+    font-size: 30px;
+    border: 1px solid black;
+}
+#goBack{
+    width: 10%;
+    background-color: dodgerblue;
+
+}
+abbr{
+    color: red;
+}

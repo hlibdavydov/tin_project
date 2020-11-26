@@ -6,7 +6,6 @@ import {Header} from "./Classes/Header";
 export class App extends React.Component {
     render() {
         return (
-
             <div>
                 <Header/>
                 <MainMenu/>

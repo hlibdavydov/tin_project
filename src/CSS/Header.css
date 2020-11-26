@@ -1,3 +1,14 @@
+:root {
+    --pf: 'Source Sans Pro', sans-serif;
+    --transition: all .5s;
+    --bg: #182227;
+    --bg-light: rgba(255, 255, 255, .15);
+    --clr-text: #FCE8Ec;
+    --clr-text-light: #FCE8Ecbb;
+    --clr-element: #FFABC2;
+    --clr-element-hover: #FFABC2bb;
+    --clr-shadow: rgba(0, 0, 0, .2);
+}
 header {
     background-color: #34495e;
     display: flex;
@@ -15,12 +26,16 @@ header img {
     margin: 10px;
 }
 button {
-    background-color: #3c3e3c;
+    background-color: var(--bg-light);
     border: none;
-    color: white;
+    color: var(--clr-text-light);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 30px;
+}
+button:hover{
+    background-color: var(--clr-element-hover);
+    color: black;
 }
