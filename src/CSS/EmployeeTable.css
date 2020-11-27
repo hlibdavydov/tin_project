@@ -19,5 +19,37 @@ table th {
 table tr {
     background-color: var(--clr-shadow);
     color: var(--clr-text-light);
-
+}
+@media all and (max-width: 720px) {
+    .employeeButtons{
+        display: grid;
+        grid-template-columns: auto;
+    }
+}
+.employeeButtons{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    color: black;
+}
+.employeeButtons Button{
+    color: var(--clr-text);
+    margin: 5px;
+}
+.details:hover{
+    background-color: blue;
+}
+.details{
+    background-color: #304FFE;
+}
+.edit{
+background-color: #7C4DFF;
+}
+.edit:hover{
+background-color: #6200EA;
+}
+.delete{
+    background-color: #C51162;
+}
+.delete:hover{
+    background-color: #F50057;
 }

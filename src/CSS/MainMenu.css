@@ -42,7 +42,7 @@ body{
 
 
 /* Media screen size */
-@media all and (max-width: 800px) {
+@media all and (max-width: 850px) {
     .MainMenu ul{
         flex-direction: column;
         align-self: center;

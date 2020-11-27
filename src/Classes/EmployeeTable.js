@@ -18,7 +18,7 @@ export class EmployeeTable extends React.Component {
         super(props);
     }
 
-    handleAddRow =(employee) => {
+    handleAddRow = (employee) => {
         const rows = this.state.rows
         rows.unshift([employee.firstName, employee.lastName, employee.email])
         this.setState({rows: rows})
@@ -45,6 +45,13 @@ export class EmployeeTable extends React.Component {
                             <td>{r[0]}</td>
                             <td>{r[1]}</td>
                             <td>{r[2]}</td>
+                            <td>
+                                <div className={"employeeButtons"}>
+                                    <Button className="details">Details</Button>
+                                    <Button className="edit">Edit</Button>
+                                    <Button className="delete">Delete</Button>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </table>

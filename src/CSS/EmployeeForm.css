@@ -16,6 +16,7 @@ label {
 
 }
 form {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: max-content 0.5fr 1fr;
     row-gap: 1rem;
@@ -82,7 +83,7 @@ abbr{
 .error-text {
     text-align: left;
     vertical-align: center;
-    padding: 10px;
+    padding: 20px;
     font-size: 22px;
     line-height: 2.25rem;
     color: #d74343;
