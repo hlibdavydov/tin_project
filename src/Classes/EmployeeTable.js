@@ -2,13 +2,14 @@ import React from "react";
 import "../CSS/EmployeeTable.css"
 import {Button} from "react-bootstrap";
 import {EmployeeForm} from "./EmployeeForm";
+import axios from "axios";
 
 export class EmployeeTable extends React.Component {
 
     state = {
         showEmployeeAdd: false,
         buttonName: '',
-        rows: [['Jan', 'Kowalski', 'j.kowalski@gmail.com']]
+        rows: []
     }
     openEmployeeAdder = () => {
         this.setState({showEmployeeAdd: !this.state.showEmployeeAdd})
@@ -18,10 +19,30 @@ export class EmployeeTable extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.loadEmployees();
+    }
+    loadEmployees = () =>{
+        axios.get('https://localhost:5001/api/employees')
+            .then(response => {
+                this.setState({rows: response.data});
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     handleAddRow = (employee) => {
-        const rows = this.state.rows
-        rows.unshift([employee.firstName, employee.lastName, employee.email])
-        this.setState({rows: rows})
+        let headers = {
+            "FirstName": employee.firstName,
+            "LastName": employee.lastName,
+            "Email": employee.email
+        }
+        axios.post('https://localhost:5001/api/employees/add', headers).then(response => {
+            this.loadEmployees();
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     render() {
@@ -42,9 +63,9 @@ export class EmployeeTable extends React.Component {
                     </tr>
                     {this.state.rows.map((r) => (
                         <tr>
-                            <td>{r[0]}</td>
-                            <td>{r[1]}</td>
-                            <td>{r[2]}</td>
+                            <td>{r.firstName}</td>
+                            <td>{r.lastName}</td>
+                            <td>{r.email}</td>
                             <td>
                                 <div className={"employeeButtons"}>
                                     <Button className="details">Details</Button>

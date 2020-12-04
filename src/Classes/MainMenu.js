@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Redirect, Switch, Link} from "react-router-dom";
 import {MainPage} from "./MainPage";
 import {Departments} from "./Departments";
 import {Employees} from "./Employees";
+
 export class MainMenu extends React.Component {
     state = {
         toggle: false

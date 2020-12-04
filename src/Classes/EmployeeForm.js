@@ -32,9 +32,9 @@ export class EmployeeForm extends React.Component {
             return;
         }
         const employee = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email
+            firstName: this.state.firstName.toString(),
+            lastName: this.state.lastName.toString(),
+            email: this.state.email.toString()
         }
         this.props.addRow(employee);
     }
