@@ -49,7 +49,7 @@ export const PrescriptionForm = () => {
         })
     }
     const resetFields = () => {
-            
+
     }
 
     return (

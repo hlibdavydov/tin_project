@@ -22,7 +22,8 @@ export class EmployeeTable extends React.Component {
     componentDidMount() {
         this.loadEmployees();
     }
-    loadEmployees = () =>{
+
+    loadEmployees = () => {
         axios.get('https://localhost:5001/api/doctors')
             .then(response => {
                 this.setState({rows: response.data});
@@ -43,6 +44,16 @@ export class EmployeeTable extends React.Component {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    deleteDoctor = (firstName, lastName) => {
+
+        axios
+            .delete(`https://localhost:5001/api/doctors?firstName=${firstName}&lastName=${lastName}`)
+            .then(response => {
+                    this.loadEmployees();
+                }
+            )
     }
 
     render() {
@@ -70,7 +81,8 @@ export class EmployeeTable extends React.Component {
                                 <div className={"employeeButtons"}>
                                     <Button className="details">Details</Button>
                                     <Button className="edit">Edit</Button>
-                                    <Button className="delete">Delete</Button>
+                                    <Button className="delete"
+                                            onClick={() => this.deleteDoctor(r.firstName, r.lastName)}>Delete</Button>
                                 </div>
                             </td>
                         </tr>
