@@ -2,7 +2,7 @@ import React from 'react';
 import '../CSS/MainMenu.css';
 import {BrowserRouter, Route, Redirect, Switch, Link} from "react-router-dom";
 import {MainPage} from "./MainPage";
-import Prescription from "./Prescriptions/Prescription";
+import {Prescription} from "./Prescriptions/Prescription";
 import {Employees} from "./Employees";
 
 export class MainMenu extends React.Component {

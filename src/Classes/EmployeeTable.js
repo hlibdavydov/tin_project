@@ -23,7 +23,7 @@ export class EmployeeTable extends React.Component {
         this.loadEmployees();
     }
     loadEmployees = () =>{
-        axios.get('https://localhost:5001/api/employees')
+        axios.get('https://localhost:5001/api/doctors')
             .then(response => {
                 this.setState({rows: response.data});
             })
@@ -38,7 +38,7 @@ export class EmployeeTable extends React.Component {
             "LastName": employee.lastName,
             "Email": employee.email
         }
-        axios.post('https://localhost:5001/api/employees/add', headers).then(response => {
+        axios.post('https://localhost:5001/api/doctors/add', headers).then(response => {
             this.loadEmployees();
         }).catch(error => {
             console.log(error);

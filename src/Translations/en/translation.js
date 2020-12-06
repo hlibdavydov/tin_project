@@ -15,4 +15,6 @@ export const TRANSLATIONS_EN = {
     filter: "Filter",
     hideSearchByForm: "Hide 'Search By' Form",
     showSearchByForm: "Show 'Search By' Form",
+    all: "All",
+    reset: "Reset"
 };
