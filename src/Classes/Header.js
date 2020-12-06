@@ -1,24 +1,31 @@
 import React from 'react';
 import '../CSS/Header.css';
 import Button from "react-bootstrap/Button";
+import {withTranslation} from "react-i18next";
+import "../Translations/translate";
+import Settings from "./Settings";
 
-export class Header extends React.Component {
+class Header extends React.Component {
     state = {
-        isActive: true
+        isActive: false,
     }
 
     render() {
+        const {t} = this.props;
         if (this.state.isActive) {
             return (
                 <div>
                     <header>
                         <h1>
-                            {this.state.companyName}
+                            {t("nameOfCompany")}
+                            <h2>
+                                {t("descriptionOfName")}
+                            </h2>
                         </h1>
-                        <img id="logo" src="https://logos-download.com/wp-content/uploads/2018/02/Hoover_logo_r.png"
+                        <img id="logo" src="http://www.freepnglogos.com/uploads/medicine-logo-png-1.png"
                              alt="LOGO"/>
                     </header>
-                        <Button variant={"primary"} size={"lg"} block={true} onClick={this.hideHeader}>Hide</Button>
+                    <Button variant={"primary"} size={"lg"} block={true} onClick={this.hideHeader}>Hide</Button>
                 </div>
             );
         } else {
@@ -28,9 +35,6 @@ export class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            companyName: "ACHME HR Department",
-        }
     }
 
     hideHeader = () => {
@@ -41,4 +45,6 @@ export class Header extends React.Component {
     }
 
 }
+
+export default withTranslation()(Header);
 

@@ -11,9 +11,13 @@
 }
 label {
     font-size: 30px;
-    padding: 10px;
+    padding: 10px 10px 10px 0;
     color: var(--clr-text-light);
 
+}
+option{
+    background: var(--bg-light);
+    color: var(--bg-light);
 }
 form {
     margin-top: 20px;
@@ -33,7 +37,7 @@ form {
     }
 
 }
-input[type=text], select, input[type=email] {
+input[type=text], select, input[type=email], input[type=date] {
     background-color: var(--bg-light);
     color: var(--clr-text);
     padding: 12px 20px;
@@ -87,4 +91,12 @@ abbr{
     font-size: 22px;
     line-height: 2.25rem;
     color: #d74343;
+}
+.filter{
+    background-color: #304FFE;
+}
+select option{
+    background: black;
+    color: #fff;
+    text-shadow: var(--clr-shadow);
 }

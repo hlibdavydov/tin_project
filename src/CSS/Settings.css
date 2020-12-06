@@ -1,0 +1,11 @@
+.Dropdown {
+    padding: 50px;
+    background: black;
+}
+.Dropdown.Item {
+    font-size: 33px;
+    color: red;
+}
+#languageSelection{
+    font-size: 28px;
+}

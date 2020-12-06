@@ -1,0 +1,18 @@
+export const TRANSLATIONS_EN = {
+    nameOfCompany:"Hospital DANDA",
+    descriptionOfName:"Doctors And Ambitions",
+    doctorsTab:"Doctors",
+    prescriptions:"Prescriptions",
+    givenBy:"Given By",
+    client:"To Client",
+    drug: "Drug",
+    date: "Date",
+    selectDoctor: "Select Doctor",
+    selectClient: "Select Client",
+    selectDrug: "Select Drug",
+    dateFrom: "Date From",
+    dateTo: "Date To",
+    filter: "Filter",
+    hideSearchByForm: "Hide 'Search By' Form",
+    showSearchByForm: "Show 'Search By' Form",
+};

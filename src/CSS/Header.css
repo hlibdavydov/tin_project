@@ -16,14 +16,19 @@ header {
 }
 
 header h1 {
-    font-size: 50px;
+    font-size: 70px;
     color: whitesmoke;
     margin-left: 15px;
     border-bottom: none;
 }
+header h2 {
+    font-size: 35px;
+    color: aqua;
+
+}
 header img {
-    max-width: 20%;
-    height: auto;
+    max-width: 300px;
+    max-height: 300px;
     margin: 10px;
 }
 button {

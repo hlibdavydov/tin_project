@@ -2,7 +2,7 @@ import React from 'react';
 import '../CSS/MainMenu.css';
 import {BrowserRouter, Route, Redirect, Switch, Link} from "react-router-dom";
 import {MainPage} from "./MainPage";
-import {Departments} from "./Departments";
+import Prescription from "./Prescriptions/Prescription";
 import {Employees} from "./Employees";
 
 export class MainMenu extends React.Component {
@@ -24,7 +24,7 @@ export class MainMenu extends React.Component {
                                 <Link to="/">Main Page</Link>
                             </li>
                             <li>
-                                <Link to="/departments">Departments</Link>
+                                <Link to="/recipes">Recipes</Link>
                             </li>
                             <li>
                                 <Link to="/employees">Employees</Link>
@@ -33,7 +33,7 @@ export class MainMenu extends React.Component {
                     </nav>
                     <Switch>
                         <Route path="/" exact component={MainPage}/>
-                        <Route path="/departments" component={Departments}/>
+                        <Route path="/recipes" component={Prescription}/>
                         <Route path="/employees" component={Employees}/>
                     </Switch>
                 </div>
