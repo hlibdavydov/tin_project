@@ -1,12 +1,13 @@
 import React from "react";
 import "../CSS/MainPage.css";
+import {useTranslation} from "react-i18next";
 
-export class MainPage extends React.Component{
-    render() {
+export const MainPage = () =>{
+   const {t} = useTranslation();
         return (
             <div>
                 <h1>
-                    MainPage
+                    {t('mainPage')}
                 </h1>
                 <p>Boy desirous families prepared gay reserved add ecstatic say. Replied joy age visitor nothing
                     cottage. Mrs door
@@ -60,5 +61,4 @@ export class MainPage extends React.Component{
                     its. Piqued son turned fat income played end wicket. To do noisy downs round an happy books. </p>
             </div>
         )
-    }
 }

@@ -58,9 +58,9 @@ export class EmployeeTable extends React.Component {
 
     render() {
         if (this.state.showEmployeeAdd) {
-            this.state.buttonName = 'Hide \'Add new employee\' form'
+            this.state.buttonName = 'Hide \'Add New Doctor\' form'
         } else {
-            this.state.buttonName = 'Add New Employee'
+            this.state.buttonName = 'Add New Doctor'
         }
         return (
             <div>

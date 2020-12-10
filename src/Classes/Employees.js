@@ -1,16 +1,15 @@
 import React from "react";
 import {EmployeeForm} from "./EmployeeForm";
 import {EmployeeTable} from "./EmployeeTable";
-export class Employees extends React.Component{
-
-    render() {
+import {useTranslation} from "react-i18next";
+export const Employees = () =>{
+    const {t} = useTranslation();
         return (
             <div>
                 <h1>
-                    Employees
+                    {t('doctorsTab')}
                 </h1>
                 <EmployeeTable/>
             </div>
         );
-    }
 }

@@ -31,17 +31,10 @@ header img {
     max-height: 300px;
     margin: 10px;
 }
-button {
-    background-color: var(--bg-light);
-    border: none;
-    color: var(--clr-text-light);
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-}
-button:hover{
-    background-color: var(--clr-element-hover);
-    color: black;
+
+@media all and (max-width: 850px) {
+    header img {
+        max-width: 100px;
+        min-height: 100px;
+    }
 }

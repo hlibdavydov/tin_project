@@ -25,11 +25,11 @@ class Header extends React.Component {
                         <img id="logo" src="http://www.freepnglogos.com/uploads/medicine-logo-png-1.png"
                              alt="LOGO"/>
                     </header>
-                    <Button variant={"primary"} size={"lg"} block={true} onClick={this.hideHeader}>Hide</Button>
+                    <Button variant={"primary"} size={"lg"} block={true} onClick={this.hideHeader}>{t('hide')}</Button>
                 </div>
             );
         } else {
-            return <Button variant={"primary"} size={"lg"} block={true} onClick={this.showHeader}>Show Header</Button>
+            return <Button variant={"primary"} size={"lg"} block={true} onClick={this.showHeader}>{t('showHeader')}</Button>
         }
     }
 

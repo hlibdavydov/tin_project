@@ -16,5 +16,19 @@ export const TRANSLATIONS_EN = {
     hideSearchByForm: "Hide 'Search By' Form",
     showSearchByForm: "Show 'Search By' Form",
     all: "All",
-    reset: "Reset"
+    reset: "Reset",
+    mainPage: "Main Page",
+    hide: "Hide",
+    showHeader: "Show Header",
+    drugs: "Drugs",
+    drugName: "Drug Name",
+    producer: "Producer",
+    actions: "Actions",
+    details: "Details",
+    edit: "Edit",
+    delete: "Delete",
+    searchTemplate: "Put Search Template",
+    detailsOf: "Details Of",
+    back: "Back"
+
 };
