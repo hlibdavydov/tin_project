@@ -7,19 +7,13 @@ export const Recipes = () => {
     const {t} = useTranslation();
     const [rows, setRows] = useState([]);
     const [filterOptions, setFilterOptions] = useContext(PrescriptionFilterContext);
-    const loadDataToTable = () =>{
+    useEffect(() => {
         axios.get('https://localhost:5001/api/prescriptions').then(response => {
             setRows(response.data);
         })
-    }
-    useEffect(() => {
-        loadDataToTable();
     }, []);
     return (
         <div>
-            <button onClick={() => {
-                loadDataToTable();
-            }}>{t('reload')}</button>
             <table>
                 <tr>
                     <th>{t("givenBy")}</th>

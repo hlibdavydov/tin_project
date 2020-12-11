@@ -29,10 +29,6 @@ export const TRANSLATIONS_EN = {
     delete: "Delete",
     searchTemplate: "Put Search Template",
     detailsOf: "Details Of",
-    back: "Back",
-    showAddPrescriptionForm: "Show 'Add Prescription Form'",
-    hideAddPrescriptionForm: "Hide 'Add Prescription Form'",
-    add: "Add",
-    reload: "Reload"
+    back: "Back"
 
 };

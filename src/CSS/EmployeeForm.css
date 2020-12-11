@@ -37,7 +37,7 @@ form {
     }
 
 }
-input[type=text], select, input[type=email], input[type=date],textarea {
+input[type=text], select, input[type=email], input[type=date] {
     background-color: var(--bg-light);
     color: var(--clr-text);
     padding: 12px 20px;
