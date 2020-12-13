@@ -19,5 +19,15 @@ export const TRANSLATIONS_PL = {
     reset: "Zresetuj",
     mainPage: "Strona główna",
     hide: "Ukryj",
-    showHeader: "Pokaż nagłówek"
+    showHeader: "Pokaż nagłówek",
+    drugs: "Lekarstwa",
+    drugName: "Nazwa Leku",
+    producer: "Producent",
+    actions: "Akcje",
+    details: "Szczegóły",
+    edit: "Edytuj",
+    delete: "Usuń",
+    searchTemplate: "Wzorzec wyszukiwania",
+    detailsOf: "Szczegóły Lekarstwa",
+    back: "Powrót"
 };

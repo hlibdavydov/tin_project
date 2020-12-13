@@ -71,6 +71,7 @@ export class EmployeeTable extends React.Component {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
+                        <th>Actions</th>
                     </tr>
                     {this.state.rows.map((r) => (
                         <tr>
