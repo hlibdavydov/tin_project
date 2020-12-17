@@ -1,16 +1,17 @@
 import {useTranslation} from "react-i18next";
 import React, {useState} from "react";
-import {DrugsTable} from "./DrugsTable";
-import {DrugAddingForm} from "./DrugAddingForm";
+import {ClientAddingForm} from "./ClientAddingForm";
+import {ClientsTable} from "./ClientsTable";
 
-const Drugs = () => {
+
+const Clients = () => {
     const {t} = useTranslation();
     return (
         <div>
             <h1>{t('drugs')}</h1>
-            <DrugAddingForm/>
-            <DrugsTable/>
+            <ClientAddingForm/>
+            <ClientsTable/>
         </div>
     )
 }
-export {Drugs};
+export {Clients};

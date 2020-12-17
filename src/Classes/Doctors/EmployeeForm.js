@@ -1,7 +1,7 @@
 import React from "react";
-import "../CSS/EmployeeForm.css"
+import "../../CSS/EmployeeForm.css"
 import {Button} from "react-bootstrap";
-import {EmailField, TextField} from "./DataValidation/Field";
+import {EmailField, TextField} from "../DataValidation/Field";
 
 export class EmployeeForm extends React.Component {
 

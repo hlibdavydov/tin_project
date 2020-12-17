@@ -33,6 +33,10 @@ export const TRANSLATIONS_EN = {
     showAddPrescriptionForm: "Show 'Add Prescription Form'",
     hideAddPrescriptionForm: "Hide 'Add Prescription Form'",
     add: "Add",
-    save: "Save"
-
+    save: "Save",
+    showAddDrugForm: 'Show \'Add Drug Form\'',
+    hideAddDrugForm: 'Hide \'Add Drug Form\'',
+    showAddClientForm: 'Show \'Add Client Form\'',
+    hideAddClientForm: 'Hide \'Add Client Form\'',
+    addDrug: 'Add Drug'
 };

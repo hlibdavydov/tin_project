@@ -22,18 +22,19 @@ table tr {
 }
 @media all and (max-width: 720px) {
     .employeeButtons{
-        display: grid;
-        grid-template-columns: auto;
+        display: flex;
+        flex-direction: column;
     }
 }
 .employeeButtons{
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
+    flex-direction: row;
     color: black;
 }
-.employeeButtons Button{
+.employeeButtons Button, .employeeButtons a {
     color: var(--clr-text);
-    margin: 5px;
+    margin-inline: auto;
+    padding-inline: 30px;
 }
 .details:hover{
     background-color: blue;

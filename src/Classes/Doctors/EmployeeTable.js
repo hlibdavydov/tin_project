@@ -1,8 +1,9 @@
 import React from "react";
-import "../CSS/EmployeeTable.css"
+import "../../CSS/EmployeeTable.css"
 import {Button} from "react-bootstrap";
 import {EmployeeForm} from "./EmployeeForm";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export class EmployeeTable extends React.Component {
 
@@ -46,10 +47,10 @@ export class EmployeeTable extends React.Component {
         });
     }
 
-    deleteDoctor = (firstName, lastName) => {
+    deleteDoctor = (id) => {
 
         axios
-            .delete(`https://localhost:5001/api/doctors?firstName=${firstName}&lastName=${lastName}`)
+            .delete(`https://localhost:5001/api/doctors/` + id)
             .then(response => {
                     this.loadEmployees();
                 }
@@ -80,10 +81,9 @@ export class EmployeeTable extends React.Component {
                             <td>{r.email}</td>
                             <td>
                                 <div className={"employeeButtons"}>
-                                    <Button className="details">Details</Button>
-                                    <Button className="edit">Edit</Button>
+                                    <Link className="details" to={'doctors/details/' + r.id}>Details</Link>
                                     <Button className="delete"
-                                            onClick={() => this.deleteDoctor(r.firstName, r.lastName)}>Delete</Button>
+                                            onClick={() => this.deleteDoctor(r.id)}>Delete</Button>
                                 </div>
                             </td>
                         </tr>

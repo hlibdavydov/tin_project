@@ -41,5 +41,13 @@ button{
 button:hover {
     background-color: var(--clr-element-hover);
     color: black;
-
+}
+ .edit, .saveButton {
+    margin-left: 50px;
+    margin-top: 30px;
+    padding-inline: 20px;
+}
+.reloadButton {
+    width: 30px;
+    height: 30px;
 }

@@ -102,7 +102,7 @@ const PrescriptionAddingForm = () => {
                     <option hidden disabled selected value={"none"}> -- select an option -- </option>
                     {drugs.filter(drug => {
                         if (searchTemplateFields.drugTemplate.empty) return true;
-                        return drug.name.toLowerCase().includes(searchTemplateFields.drugTemplate);
+                        return drug.name.toLowerCase().includes(searchTemplateFields.drugTemplate.toLowerCase());
                     })
                         .map((drug,index) => {
                             const name = drug.name;

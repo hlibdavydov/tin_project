@@ -101,7 +101,7 @@ export class EmailField extends TextField {
     }
 }
 
-class DateField extends Field {
+export class DateField extends Field {
     static pattern = /(\d{4})-(\d{2})-(\d{2})/;
     dateIsFromPast;
 

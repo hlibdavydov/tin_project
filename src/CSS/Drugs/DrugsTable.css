@@ -16,15 +16,12 @@
     color: black;
 }
 
-.drugTableButtons Button {
+
+.drugTableButtons Button,  .drugTableButtons a{
     color: var(--clr-text);
-    margin: 5px;
+    margin-inline: auto;
+    padding-inline: 30px;
 }
-.drugTableButtons .details {
-    margin: 5px;
-
-}
-
 a {
     font-family: var(--pf);
     background-color: var(--bg-light);

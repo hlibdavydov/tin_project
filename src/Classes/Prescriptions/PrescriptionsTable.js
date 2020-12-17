@@ -17,9 +17,11 @@ export const Recipes = () => {
     }, []);
     return (
         <div>
+            {/*<img className='reloadButton' src='https://cdn.icon-icons.com/icons2/614/PNG/512/cloud-reload-symbol_icon-icons.com_56547.png'/>*/}
             <button onClick={() => {
                 loadDataToTable();
-            }}>{t('reload')}</button>
+            }}>{t('reload')}
+            </button>
             <table>
                 <tr>
                     <th>{t("givenBy")}</th>
