@@ -9,10 +9,22 @@ textarea {
     width: 1000px;
     height: 200px;
 }
-.details, .edit {
+.details, .edit, .saveButton {
     margin-left: 50px;
     margin-top: 30px;
     padding-inline: 20px;
+}
+.saveButton{
+    background-color: #FFB74D;
+    color: black;
+}
+.viewingMode {
+    color: var(--clr-text-light);
+    font-style: italic;
+}
+.editingMode {
+    color: #d92222;
+    font-style: italic;
 }
 @media all and (max-width: 1000px){
     textarea {

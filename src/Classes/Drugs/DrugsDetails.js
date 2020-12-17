@@ -7,39 +7,64 @@ import '../../CSS/Drugs/DrugsDetails.css'
 const DrugsDetails = () => {
     const {id} = useParams();
     const {t} = useTranslation();
-    const [infoAboutDrug, setInfoAboutDrug] = useState({name: '', producer: '', description: ''})
+    const [editingDisabled, setEditingDisable] = useState(true);
+    const [drugName, setDrugName] = useState('');
+    const [drugProducer, setDrugProducer] = useState('');
+    const [drugDescription, setDrugDescription] = useState('');
     useEffect(() => {
-        axios.get('https://localhost:5001/api/drugs/' + id)
-            .then(response => {
-                setInfoAboutDrug({
-                    name: response.data.name,
-                    producer: response.data.producer,
-                    description: response.data.description
+            axios.get('https://localhost:5001/api/drugs/' + id)
+                .then(response => {
+                    setDrugName(response.data.name);
+                    setDrugProducer(response.data.producer);
+                    setDrugDescription(response.data.description);
                 })
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, [])
+                .catch(error => {
+                    console.log(error);
+                })
+        }, []
+    )
+    const updateDrugInformation = () => {
+        let headers = {
+            "Id": id,
+            "Name": drugName,
+            "Producer": drugProducer,
+            "Description": drugDescription
+        }
+        axios.put('https://localhost:5001/api/drugs', headers).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        });
+        setEditingDisable(true);
+    }
     return (
         <div>
-            <h1>{t('detailsOf') + ': ' + infoAboutDrug.name}</h1>
+            <h1>{t('detailsOf') + ': ' + drugName}</h1>
+            {editingDisabled ?
+                <h2 className='viewingMode'>{t('Viewing mode')}</h2>
+                :
+                <h2 className='editingMode'>{t('Editing mode')}</h2>
+            }
             <div className='drugsDetails'>
                 <h2>Name</h2>
-                <select disabled>
-                    <option>
-                        {infoAboutDrug.name}
-                    </option>
-                </select>
+                <input name='drugName' disabled={editingDisabled} type='text' value={drugName}
+                       onChange={event => setDrugName(event.target.value)}/>
                 <h2>Producer</h2>
-                <input name='producerTextField' disabled type='text' value={infoAboutDrug.producer}/>
+                <input name='producerTextField' disabled={editingDisabled} type='text' value={drugProducer}
+                       onChange={event => setDrugProducer(event.target.value)}/>
                 <h2>Description</h2>
-                <textarea disabled value={infoAboutDrug.description}/>
+                <textarea disabled={editingDisabled} value={drugDescription}
+                          onChange={event => setDrugDescription(event.target.value)}/>
             </div>
             <Link className='details' to='/drugs'>{t('back')}</Link>
-            <Link className='edit' to='/drugs'>{t('edit')}</Link>
+            {editingDisabled ?
+                <button className='edit' onClick={() => {
+                    setEditingDisable(false)
+                }}>{t('edit')}</button>
+                :
+                <button className='saveButton' onClick={updateDrugInformation}>{t('save')}</button>
+            }
         </div>
-
     );
 }
 export {DrugsDetails};

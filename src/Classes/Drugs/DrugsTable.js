@@ -40,7 +40,6 @@ const DrugsTable = () => {
                         <td>{drug.producer}</td>
                         <td className='drugTableButtons'>
                             <Link className='details' to={"/drugs/details/" + drug.id}>{t('details')}</Link>
-                            <button className='edit'>{t('edit')}</button>
                             <button className='delete' onClick={() => deleteDrug(drug.id)}>{t('delete')}</button>
                         </td>
                     </tr>
