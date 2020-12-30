@@ -93,7 +93,7 @@ const ClientAddingForm = () => {
                     <label>{t('dateOfBirth')}</label>
                     <input type='date' value={dateOfBirth} onSelect={changeDateOfBirthValue} onChange={changeDateOfBirthValue}/>
                     <span className='error-text'>{dateOfBirthError}</span>
-                    <button className='submit' type='submit'>{t('addDrug')}</button>
+                    <button className='submit' type='submit'>{t('addClient')}</button>
                 </form>
             </div>
             }

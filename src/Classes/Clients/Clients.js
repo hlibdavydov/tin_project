@@ -8,7 +8,7 @@ const Clients = () => {
     const {t} = useTranslation();
     return (
         <div>
-            <h1>{t('drugs')}</h1>
+            <h1>{t('clients')}</h1>
             <ClientAddingForm/>
             <ClientsTable/>
         </div>

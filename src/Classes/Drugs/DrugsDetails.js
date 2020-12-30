@@ -41,18 +41,18 @@ const DrugsDetails = () => {
         <div>
             <h1>{t('detailsOf') + ': ' + drugName}</h1>
             {editingDisabled ?
-                <h2 className='viewingMode'>{t('Viewing mode')}</h2>
+                <h2 className='viewingMode'>{t('viewingMode')}</h2>
                 :
-                <h2 className='editingMode'>{t('Editing mode')}</h2>
+                <h2 className='editingMode'>{t('editingMode')}</h2>
             }
             <div className='drugsDetails'>
-                <h2>Name</h2>
+                <h2>{t('name')}</h2>
                 <input name='drugName' disabled={editingDisabled} type='text' value={drugName}
                        onChange={event => setDrugName(event.target.value)}/>
-                <h2>Producer</h2>
+                <h2>{t('producer')}</h2>
                 <input name='producerTextField' disabled={editingDisabled} type='text' value={drugProducer}
                        onChange={event => setDrugProducer(event.target.value)}/>
-                <h2>Description</h2>
+                <h2>{t('description')}</h2>
                 <textarea disabled={editingDisabled} value={drugDescription}
                           onChange={event => setDrugDescription(event.target.value)}/>
             </div>

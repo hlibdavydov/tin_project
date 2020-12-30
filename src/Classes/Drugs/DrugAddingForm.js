@@ -84,13 +84,13 @@ const DrugAddingForm = () => {
             {showAddingForm &&
             <div>
                 <form onSubmit={addNewDrug}>
-                    <label>{t('Name')}</label>
+                    <label>{t('name')}</label>
                     <input type='text' value={name} onChange={changeNameValue}/>
                     <span className='error-text'>{nameError}</span>
-                    <label>{t('Producer')}</label>
+                    <label>{t('producer')}</label>
                     <input type='text' value={producer} onChange={changeProducerValue}/>
                     <span className='error-text'>{producerError}</span>
-                    <label>{t('Description')}</label>
+                    <label>{t('description')}</label>
                     <textarea value={description} onChange={changeDescriptionValue}/>
                     <span className='error-text'>{descriptionError}</span>
                     <button className='submit' type='submit'>{t('addDrug')}</button>

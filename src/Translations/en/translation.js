@@ -38,5 +38,14 @@ export const TRANSLATIONS_EN = {
     hideAddDrugForm: 'Hide \'Add Drug Form\'',
     showAddClientForm: 'Show \'Add Client Form\'',
     hideAddClientForm: 'Hide \'Add Client Form\'',
-    addDrug: 'Add Drug'
+    addDrug: 'Add Drug',
+    clients: 'Clients',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    dateOfBirth: 'Date Of Birth',
+    addClient: 'Add Client',
+    viewingMode: 'Viewing Mode',
+    editingMode: "Editing Mode",
+    name: "Name",
+    description: "Description"
 };

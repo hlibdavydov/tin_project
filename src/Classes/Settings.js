@@ -3,6 +3,7 @@ import {Dropdown, Button} from "react-bootstrap";
 import '../CSS/Settings.css';
 import i18n from '../Translations/translate';
 import Header from "./Header";
+import {Logging} from "./Logging/Logging";
 
 
 export default function Settings() {

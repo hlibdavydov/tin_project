@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+.loggingButtons {
+    display: flex;
+    flex-direction: row;
+}
+.logging h1 {
+    text-align: center;
+}
+
+.logging input[type=text] {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.logging form {
+    grid-template-columns: auto;
+    margin-left: unset;
+    display: grid;
+    padding-left: 0;
+}
