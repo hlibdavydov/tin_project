@@ -8,12 +8,15 @@ import {SignIn} from "./Classes/Logging/SignIn";
 export const SessionContext = React.createContext();
 
 export const App = () => {
-    const [session, setSession] = useState('xd');
+    const [user, setUser] = useState({
+        accessToken: '',
+        refreshToken: '',
+    });
     const updateSession = (session) => {
-        setSession(session);
+        setUser(session);
     };
     return (
-        <SessionContext.Provider value={{session: session,updateSession: updateSession}}>
+        <SessionContext.Provider value={[user, updateSession]}>
             <div>
                 <Settings/>
                 <Logging/>

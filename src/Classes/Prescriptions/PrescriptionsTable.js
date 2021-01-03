@@ -2,15 +2,23 @@ import React, {useContext, useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import {PrescriptionFilterContext} from "./Prescription";
+import {SessionContext} from "../../App";
 
 export const Recipes = () => {
     const {t} = useTranslation();
     const [rows, setRows] = useState([]);
     const [filterOptions, setFilterOptions] = useContext(PrescriptionFilterContext);
+    const [user, SetUser] = useContext(SessionContext);
     const loadDataToTable = () =>{
-        axios.get('https://localhost:5001/api/prescriptions').then(response => {
+        axios.get('https://localhost:5001/api/prescriptions',{
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             setRows(response.data);
-        })
+        }).catch(reason => {
+            console.log(reason);
+        });
     }
     useEffect(() => {
         loadDataToTable();

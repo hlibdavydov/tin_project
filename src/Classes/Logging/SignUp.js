@@ -9,6 +9,41 @@ import {useTranslation} from "react-i18next";
 const SignUp = () => {
     const {t} = useTranslation();
     const [show, setShow] = useState(false);
+    const [password, setPassword] = useState('');
+    const [login, setLogin] = useState('');
+    const [repeatedPassword, setRepeatedPassword] = useState('');
+    const [errorText, setErrorText] = useState('');
+
+
+    const SendSignUp = (event) => {
+        event.preventDefault();
+        if (password !== repeatedPassword) {
+            setErrorText("Password don't match");
+            return;
+        }
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({"Login": login, "Password": password});
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://localhost:5001/api/doctors/sign-up", requestOptions)
+            .then(response => {
+                if (response.status !== 200) {
+                    setErrorText("Cannot Sign Up")
+                } else {
+                    setShow(false);
+                }
+            })
+            .catch(error => console.log('error', error));
+    }
+
     return (
         <div>
             <button onClick={() => setShow(true)}>Sign Up</button>
@@ -29,15 +64,20 @@ const SignUp = () => {
                    }>
                 <div className='logging'>
                     <h1>Sign Up</h1>
-                    <form>
+                    <form onSubmit={SendSignUp}>
                         <label>
-                            Email
+                            Login
                         </label>
-                        <input type='text'/>
+                        <input type='text' onChange={(event) => setLogin(event.target.value)}/>
                         <label>
                             Password
                         </label>
-                        <input type='password'/>
+                        <input type='password' onChange={(event => setPassword(event.target.value))}/>
+                        <label>
+                            Repeat Password
+                        </label>
+                        <input type='password' onChange={event => setRepeatedPassword(event.target.value)}/>
+                        <span className='error-text'>{errorText}</span>
                         <button className='submit'>Sign Up</button>
                     </form>
                 </div>

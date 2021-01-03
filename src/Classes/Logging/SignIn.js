@@ -15,28 +15,42 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [errorText, setErrorText] = useState('');
     const [session, setSession] = useState('');
-    const sessionContext = useContext(SessionContext);
+    const [user, setUser] = useContext(SessionContext);
 
-    const logIn = (event) =>{
+    const logIn = (event) => {
         event.preventDefault();
-        console.log("posting")
-        axios.post("https://localhost:5001/api/doctors/", {
-            Login: login,
-            Password: password
-        })
-            .then(response =>{
-                updateSession(response);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({"Login": login, "Password": password});
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://localhost:5001/api/doctors", requestOptions)
+            .then(response => {
+
+                if (response.status === 200) {
+                    response.json().then(value => {
+                        updateSession(value)
+                    });
+                } else {
+                    setErrorText("Login or Password is incorrect")
+                }
             })
-            .catch()
+            .catch(error => console.log('error', error));
+
     }
-    const updateSession = (response) =>{
-        console.log(response.data.accessToken);
-        console.log(response.data);
+    const updateSession = (response) => {
         const sessionProperties = {
-            accessToken: response.data.accessToken,
-            refreshToken: response.data.refreshToken
+            accessToken: response.accessToken,
+            refreshToken: response.refreshToken
         }
-        sessionContext.updateSession(response.data.accessToken);
+        setUser(sessionProperties);
     }
     return (
         <div>

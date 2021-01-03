@@ -5,13 +5,13 @@ import {SessionContext} from "../App";
 
 export const MainPage = () =>{
    const {t} = useTranslation();
-    const value = useContext(SessionContext);
+    const [user, setUser] = useContext(SessionContext);
         return (
             <div>
                 <h1>
                     {t('mainPage')}
                 </h1>
-                {console.log("value "+value.session)}
+                {console.log("value "+user.accessToken)}
                 <p>Boy desirous families prepared gay reserved add ecstatic say. Replied joy age visitor nothing
                     cottage. Mrs door
                     paid led loud sure easy read. Hastily at perhaps as neither or ye fertile tedious visitor. Use fine

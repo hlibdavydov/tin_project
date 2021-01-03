@@ -10,7 +10,7 @@ export const EmployeeTable = () => {
     const [showEmployeeAdd, setShowEmployeeAdd] = useState(false);
     const [buttonName, setButtonName] = useState('');
     const [rows, setRows] = useState([]);
-    const sessionContext = useContext(SessionContext);
+    const [user, setUser] = useContext(SessionContext);
 
     const openEmployeeAdder = () => {
         setShowEmployeeAdd(!showEmployeeAdd);
@@ -22,12 +22,11 @@ export const EmployeeTable = () => {
 
 
     const loadEmployees = () => {
-        console.log("Access Token:" + sessionContext.session);
         var config = {
             method: 'get',
             url: 'https://localhost:5001/api/doctors',
             headers: {
-                'Authorization': `Bearer ${sessionContext.session}`,
+                'Authorization': `Bearer ${user.accessToken}`,
                 'Content-Type': 'application/json'
             }
         };
@@ -42,12 +41,16 @@ export const EmployeeTable = () => {
     }
 
     const handleAddRow = (employee) => {
-        let headers = {
+        let body = {
             "FirstName": employee.firstName,
             "LastName": employee.lastName,
             "Email": employee.email
         }
-        axios.post('https://localhost:5001/api/doctors/add', headers).then(response => {
+        axios.post('https://localhost:5001/api/doctors/add', body, {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             loadEmployees();
         }).catch(error => {
             console.log(error);
@@ -57,11 +60,17 @@ export const EmployeeTable = () => {
     const deleteDoctor = (id) => {
 
         axios
-            .delete(`https://localhost:5001/api/doctors/` + id)
+            .delete(`https://localhost:5001/api/doctors/` + id, {
+                headers:{
+                    Authorization: `Bearer ${user.accessToken}`
+
+                }
+            })
             .then(response => {
                     loadEmployees();
                 }
             )
+            .catch(reason => {})
     }
 
     return (
@@ -80,7 +89,7 @@ export const EmployeeTable = () => {
                         <td>{r.firstName}</td>
                         <td>{r.lastName}</td>
                         <td>{r.email}</td>
-                        <td>
+                        <td id={r.id}>
                             <div className={"employeeButtons"}>
                                 <Link className="details" to={'doctors/details/' + r.id}>Details</Link>
                                 <Button className="delete"

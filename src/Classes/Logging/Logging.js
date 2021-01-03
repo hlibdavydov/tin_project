@@ -1,13 +1,22 @@
 import '../../CSS/Logging.css'
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {SignIn} from "./SignIn";
 import {SignUp} from "./SignUp";
-const Logging = () =>{
-    const [showSignInForm,setShowSignInForm] = useState(false);
+import {SessionContext} from "../../App";
+
+const Logging = () => {
+    const [showSignInForm, setShowSignInForm] = useState(false);
+    const [user, setUser] = useContext(SessionContext)
     return (
-        <div className='loggingButtons'>
-            <SignIn/>
-            <SignUp/>
+        <div >
+            {!user.accessToken ?
+                <div className='loggingButtons'>
+                    <SignIn/>
+                    <SignUp/>
+                </div>
+                :
+                <button onClick={()=> {setUser({})}}>Log out</button>
+            }
         </div>
     );
 
