@@ -42,11 +42,20 @@ button:hover {
     background-color: var(--clr-element-hover);
     color: black;
 }
+button:hover:disabled {
+    background-color: grey;
+    opacity: 50%;
+    color: var(--clr-text-light)
+}
  .edit, .saveButton {
     margin-left: 50px;
     margin-top: 30px;
     padding-inline: 20px;
 }
+ .edit:disabled {
+     opacity: 50%;
+     background-color: grey;
+ }
 .reloadButton {
     width: 30px;
     height: 30px;

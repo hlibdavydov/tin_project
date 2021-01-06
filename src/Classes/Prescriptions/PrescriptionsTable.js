@@ -10,7 +10,11 @@ export const Recipes = () => {
     const [filterOptions, setFilterOptions] = useContext(PrescriptionFilterContext);
     const [user, SetUser] = useContext(SessionContext);
     const loadDataToTable = () =>{
-        axios.get('https://localhost:5001/api/prescriptions',{
+        axios.get('https://localhost:5001/api/prescriptions', {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        },{
             headers:{
                 Authorization: `Bearer ${user.accessToken}`
             }

@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
 import {useTranslation} from "react-i18next";
 import '../../CSS/Drugs/DrugsDetails.css'
+import {SessionContext} from "../../App";
 
 const DrugsDetails = () => {
     const {id} = useParams();
@@ -10,9 +11,14 @@ const DrugsDetails = () => {
     const [editingDisabled, setEditingDisable] = useState(true);
     const [drugName, setDrugName] = useState('');
     const [drugProducer, setDrugProducer] = useState('');
+    const [user, setUser] = useContext(SessionContext);
     const [drugDescription, setDrugDescription] = useState('');
     useEffect(() => {
-            axios.get('https://localhost:5001/api/drugs/' + id)
+            axios.get('https://localhost:5001/api/drugs/' + id, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then(response => {
                     setDrugName(response.data.name);
                     setDrugProducer(response.data.producer);
@@ -30,7 +36,11 @@ const DrugsDetails = () => {
             "Producer": drugProducer,
             "Description": drugDescription
         }
-        axios.put('https://localhost:5001/api/drugs', headers).then(response => {
+        axios.put('https://localhost:5001/api/drugs', headers, {
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);
@@ -58,7 +68,7 @@ const DrugsDetails = () => {
             </div>
             <Link className='details' to='/drugs'>{t('back')}</Link>
             {editingDisabled ?
-                <button className='edit' onClick={() => {
+                <button disabled={!(user.roles && (user.roles.includes('admin' || user.role.includes('doctor'))))} className='edit' onClick={() => {
                     setEditingDisable(false)
                 }}>{t('edit')}</button>
                 :

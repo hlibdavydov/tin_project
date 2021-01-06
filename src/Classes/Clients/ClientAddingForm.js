@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Button} from "react-bootstrap";
 import {DateField, TextField} from "../DataValidation/Field";
 import axios from "axios";
+import {SessionContext} from "../../App";
 
 const ClientAddingForm = () => {
     const {t} = useTranslation();
@@ -13,8 +14,10 @@ const ClientAddingForm = () => {
     const [firstNameError, setFirstNameError] = useState('');
     const [lastNameError, setLastNameError] = useState('');
     const [dateOfBirthError,setDateOfBirthError] = useState('');
+    const [user, setUser] = useContext(SessionContext);
 
-   const changeFirstNameValue = event =>{
+
+    const changeFirstNameValue = event =>{
        let value = event.target.value;
        const nameField = new TextField(value);
        setFirstNameError('');
@@ -65,7 +68,11 @@ const ClientAddingForm = () => {
             "LastName": lastName,
             "DateOfBirth": dateOfBirth
         }
-        axios.post('https://localhost:5001/api/clients/add', headers).then(response => {
+        axios.post('https://localhost:5001/api/clients/add', headers, {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);

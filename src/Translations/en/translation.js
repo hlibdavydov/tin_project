@@ -1,7 +1,7 @@
 export const TRANSLATIONS_EN = {
     nameOfCompany:"Hospital DANDA",
     descriptionOfName:"Doctors And Ambitions",
-    doctorsTab:"Doctors",
+    doctors:"Doctors",
     prescriptions:"Prescriptions",
     givenBy:"Given By",
     client:"To Client",

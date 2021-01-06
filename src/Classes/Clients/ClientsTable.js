@@ -1,15 +1,22 @@
 import {useTranslation} from "react-i18next";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState,useContext} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import '../../CSS/Drugs/DrugsTable.css'
+import '../../CSS/Drugs/DrugsTable.css';
+import {SessionContext} from "../../App";
+
 
 const ClientsTable = () => {
     const {t} = useTranslation();
     const [clients, setClients] = useState([]);
+const [user, setUser] = useContext(SessionContext);
 
     const loadClients = () => {
-        axios.get('https://localhost:5001/api/clients')
+        axios.get('https://localhost:5001/api/clients', {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        })
             .then(response => {
                 setClients(response.data);
                 console.log(response.data)
@@ -23,7 +30,11 @@ const ClientsTable = () => {
         loadClients();
     }, []);
     const deleteClient = (id) => {
-        axios.delete('https://localhost:5001/api/clients/' + id)
+        axios.delete('https://localhost:5001/api/clients/' + id, {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        })
             .then(response => {
                 console.log(response.data);
             })

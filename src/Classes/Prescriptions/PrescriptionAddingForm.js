@@ -2,6 +2,7 @@ import {useTranslation} from "react-i18next";
 import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {Button} from "react-bootstrap";
+import {SessionContext} from "../../App";
 
 const PrescriptionAddingForm = () => {
     const {t} = useTranslation();
@@ -9,6 +10,8 @@ const PrescriptionAddingForm = () => {
     const [clients, setClients] = useState([]);
     const [doctors, setDoctors] = useState([]);
     const [drugs, setDrugs] = useState([]);
+    const [user, setUser] = useContext(SessionContext);
+
     const [searchTemplateFields, setSearchTemplateFields] = useState({
         doctorTemplate: '',
         clientTemplate: '',
@@ -23,7 +26,11 @@ const PrescriptionAddingForm = () => {
             "DrugId": formElements.selectDrug,
             "Date": formElements.selectDate
         }
-        axios.post('https://localhost:5001/api/prescriptions/add', headers).then(response => {
+        axios.post('https://localhost:5001/api/prescriptions/add', headers , {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);

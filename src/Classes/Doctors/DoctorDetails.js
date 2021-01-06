@@ -1,19 +1,25 @@
 import {Link, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import '../../CSS/Drugs/DrugsDetails.css'
+import {SessionContext} from "../../App";
 
 
-const DoctorDetails = () =>{
+const DoctorDetails = () => {
     const {id} = useParams();
     const {t} = useTranslation();
     const [editingDisabled, setEditingDisable] = useState(true);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [user, setUser] = useContext(SessionContext);
     useEffect(() => {
-            axios.get('https://localhost:5001/api/doctors/' + id)
+            axios.get('https://localhost:5001/api/doctors/' + id, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then(response => {
                     setFirstName(response.data.firstName);
                     setLastName(response.data.lastName);
@@ -31,7 +37,11 @@ const DoctorDetails = () =>{
             "LastName": lastName,
             "Email": email
         }
-        axios.put('https://localhost:5001/api/doctors', headers).then(response => {
+        axios.put('https://localhost:5001/api/doctors', headers, {
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);
@@ -55,7 +65,7 @@ const DoctorDetails = () =>{
                        onChange={event => setLastName(event.target.value)}/>
                 <h2>Email</h2>
                 <input type='text' disabled={editingDisabled} value={email}
-                          onChange={event => setEmail(event.target.value)}/>
+                       onChange={event => setEmail(event.target.value)}/>
             </div>
             <Link className='details' to='/doctors'>{t('back')}</Link>
             {editingDisabled ?

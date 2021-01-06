@@ -5,6 +5,7 @@ import {Button} from "react-bootstrap";
 import '../../CSS/Prescription/PrescriptionsForm.css'
 import {PrescriptionFilterContext} from './Prescription';
 import axios from "axios";
+import {SessionContext} from "../../App";
 
 export const PrescriptionForm = () => {
     const {t} = useTranslation();
@@ -12,6 +13,8 @@ export const PrescriptionForm = () => {
     const [doctors, setDoctors] = useState([]);
     const [clients, setClients] = useState([]);
     const [drugs, setDrugs] = useState([]);
+    const [user, setUser] = useContext(SessionContext);
+
     const [searchTemplateFields, setSearchTemplateFields] = useState({
         doctorTemplate: '',
         clientTemplate: '',
@@ -23,20 +26,32 @@ export const PrescriptionForm = () => {
         console.log(filterOptions);
     }
     useEffect(() => {
-        axios.get('https://localhost:5001/api/doctors').then(response => {
+        axios.get('https://localhost:5001/api/doctors',  {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             const doctors = response.data.map(doctor => {
                 return doctor.firstName + ' ' + doctor.lastName;
             });
             setDoctors(doctors);
         });
-        axios.get('https://localhost:5001/api/clients').then(response => {
+        axios.get('https://localhost:5001/api/clients', {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
 
             const clients = response.data.map(client => {
                 return client.firstName + ' ' + client.lastName;
             });
             setClients(clients);
         });
-        axios.get('https://localhost:5001/api/drugs').then(response => {
+        axios.get('https://localhost:5001/api/drugs', {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             setDrugs(response.data);
         }).catch(error => console.log(error));
 

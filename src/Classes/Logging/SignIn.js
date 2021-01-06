@@ -33,7 +33,7 @@ const SignIn = () => {
 
         fetch("https://localhost:5001/api/doctors", requestOptions)
             .then(response => {
-
+                console.log(response);
                 if (response.status === 200) {
                     response.json().then(value => {
                         updateSession(value)
@@ -46,9 +46,11 @@ const SignIn = () => {
 
     }
     const updateSession = (response) => {
+        console.log(response);
         const sessionProperties = {
             accessToken: response.accessToken,
-            refreshToken: response.refreshToken
+            refreshToken: response.refreshToken,
+            roles: response.roles
         }
         setUser(sessionProperties);
     }

@@ -11,6 +11,7 @@ export const App = () => {
     const [user, setUser] = useState({
         accessToken: '',
         refreshToken: '',
+        roles: []
     });
     const updateSession = (session) => {
         setUser(session);

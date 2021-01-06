@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
 import {useTranslation} from "react-i18next";
 import '../../CSS/Drugs/DrugsDetails.css'
+import {SessionContext} from "../../App";
 
 const ClientDetails = () => {
     const {id} = useParams();
@@ -11,8 +12,14 @@ const ClientDetails = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState('');
+    const [user, setUser] = useContext(SessionContext);
+
     useEffect(() => {
-            axios.get('https://localhost:5001/api/clients/' + id)
+            axios.get('https://localhost:5001/api/clients/' + id, {
+                headers:{
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then(response => {
                     console.log(response.data);
                     setFirstName(response.data.firstName);
@@ -32,7 +39,11 @@ const ClientDetails = () => {
             "LastName": lastName,
             "DateOfBirth": dateOfBirth
         }
-        axios.put('https://localhost:5001/api/clients', headers).then(response => {
+        axios.put('https://localhost:5001/api/clients', headers, {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);

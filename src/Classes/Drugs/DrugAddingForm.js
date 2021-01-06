@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {Button} from "react-bootstrap";
 import {TextField} from "../DataValidation/Field";
 import axios from "axios";
+import {SessionContext} from "../../App";
 
 const DrugAddingForm = () => {
     const {t} = useTranslation();
@@ -13,6 +14,7 @@ const DrugAddingForm = () => {
     const [nameError, setNameError] = useState('');
     const [producerError, setProducerError] = useState('');
     const [descriptionError,setDescriptionError] = useState('');
+    const [user] = useContext(SessionContext);
 
    const changeNameValue = event =>{
        let value = event.target.value;
@@ -65,7 +67,11 @@ const DrugAddingForm = () => {
             "Producer": producer,
             "Description": description
         }
-        axios.post('https://localhost:5001/api/drugs/add', headers).then(response => {
+        axios.post('https://localhost:5001/api/drugs/add', headers, {
+            headers:{
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        }).then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);
